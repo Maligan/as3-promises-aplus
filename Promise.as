@@ -4,7 +4,7 @@ package utils
 	 * Promises/A+ compatible implementation.
 	 * @see https://github.com/promises-aplus/promises-spec
 	 * @author: maligan (maligan@rambler.ru)
-	 * @version: 0.9.2
+	 * @version: 0.9
 	 */
 	public class Promise
 	{
@@ -36,7 +36,7 @@ package utils
 		{
 			_state = PENDING;
 			_reactions = new Vector.<Promise>();
-			if (executor) invoke(executor);
+			if (executor) invokeExecutor(executor);
 		}
 
 		public function then(onFulfilled:Function = null, onRejected:Function = null):Promise
@@ -68,7 +68,7 @@ package utils
 
 		// invocations
 
-		private function invoke(executor:Function):void
+		private function invokeExecutor(executor:Function):void
 		{
 			try
 			{
