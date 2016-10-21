@@ -75,7 +75,7 @@ package
 				else if (executor.length == 2)
 					executor(fulfil, reject);
 			}
-			catch(e:Error)
+			catch(e:*)
 			{
 				reject(e);
 			}
@@ -89,7 +89,7 @@ package
 				var funcResult:Object = func.length==0 ? func() : func(_result);
 				reaction.fulfil(funcResult);
 			}
-			catch (e:Error)
+			catch (e:*)
 			{
 				reaction.reject(e)
 			}
