@@ -15,7 +15,7 @@ package utils
 				promise.resolve(new TypeError(), REJECTED);
 
 			else if (result is Promise)
-				Promise(result).then(promise.fulfil, promise.reject);
+				Promise(result).then(promise.fulfill, promise.reject);
 
 			else
 				promise.resolve(result, state);
@@ -73,9 +73,9 @@ package utils
 			try
 			{
 				if (executor.length == 1)
-					executor(fulfil);
+					executor(fulfill);
 				else if (executor.length == 2)
-					executor(fulfil, reject);
+					executor(fulfill, reject);
 			}
 			catch(e:*)
 			{
@@ -89,7 +89,7 @@ package utils
 			{
 				var func:Function = _state==FULFILLED ? reaction._onFulfilled : reaction._onRejected;
 				var funcResult:Object = func.length==0 ? func() : func(_result);
-				reaction.fulfil(funcResult);
+				reaction.fulfill(funcResult);
 			}
 			catch (e:*)
 			{
@@ -99,7 +99,7 @@ package utils
 
 		// resolve
 
-		public function fulfil(value:Object = null):void
+		public function fulfill(value:Object = null):void
 		{
 			resolveProcedure(this, value, FULFILLED);
 		}
