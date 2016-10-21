@@ -1,2 +1,2 @@
-# as3-promises-aplus
-Promises/A+ compatible implementation for ActionScript 3
+# Promises/A+
+This is simple implimentation of Promises/A+ standart for ActionScript 3.
