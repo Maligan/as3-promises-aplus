@@ -1,10 +1,10 @@
-package
+package utils
 {
 	/**
 	 * Promises/A+ compatible implementation.
 	 * @see https://github.com/promises-aplus/promises-spec
 	 * @author: maligan (maligan@rambler.ru)
-	 * @version: 0.9
+	 * @version: 0.9.2
 	 */
 	public class Promise
 	{
@@ -44,12 +44,14 @@ package
 			onFulfilled ||= identity;
 			onRejected  ||= thrower;
 
-			var reaction:Promise = _reactions[_reactions.length] = new Promise();
+			var reaction:Promise = new Promise();
 			reaction._onFulfilled = onFulfilled;
 			reaction._onRejected = onRejected;
 
 			if (_state != PENDING)
 				invokeReaction(reaction);
+			else
+				_reactions[_reactions.length] = reaction;
 
 			return reaction;
 		}
